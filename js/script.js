@@ -2,6 +2,7 @@
 
 function titleClickHandler(event){
   const clickedElement = this;
+  event.preventDefault();
   console.log('Link was clicked!');
 
 
@@ -20,11 +21,14 @@ const activeArticles = document.querySelectorAll('.posts .post.active');
 for(let activeArticle of activeArticles){
   activeArticle.classList.remove('active');
 }
-
+const articleSelector = clickedElement.getAttribute('href');
+console.log(articleSelector) ;
   /* get 'href' attribute from the clicked link */
-
+const targetArticle = document.querySelector(articleSelector);
+console.log(targetArticle);
   /* find the correct article using the selector (value of 'href' attribute) */
-
+targetArticle.classList.add('active');
+console.log('targetArticle:', targetArticle);
   /* add class 'active' to the correct article */
 }
 
