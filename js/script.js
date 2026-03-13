@@ -46,11 +46,14 @@ function generateTitleLinks(){
   }
   clearMessages();
   /* remove contents of titleList */
-
+  const articles = document.querySelectorAll(optArticleSelector);
+  for(let article of articles){
+      
   /* for each article */
-
+  const articleId = articles.getAttribute('id');
+  console.log(articleId) ;
     /* get the article id */
-
+  
     /* find the title element */
 
     /* get the title from the title element */
@@ -60,7 +63,7 @@ function generateTitleLinks(){
     /* insert link into titleList */
 
 }
-
+}
 generateTitleLinks();
 
 
