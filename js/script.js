@@ -58,8 +58,10 @@ function generateTitleLinks(){
   
     /* get the title from the title element */
   const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+  console.log('linkHTML:', linkHTML);
     /* create HTML of the link */
-  titleList.innerHTML = titleList.innerHTML + linkHTML;
+  /* titleList.innerHTML = titleList.innerHTML + linkHTML; */
+  titleList.insertAdjacentHTML('beforeend', linkHTML);
     /* insert link into titleList */
 
 }
