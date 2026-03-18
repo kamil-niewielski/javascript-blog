@@ -45,27 +45,21 @@ function generateTitleLinks(){
 	    titleList.innerHTML = '';
   }
   clearMessages();
-  /* remove contents of titleList */
+
+  let html = '';
   const articles = document.querySelectorAll(optArticleSelector);
   for(let article of articles){
-      
-  /* for each article */
   const articleId = article.getAttribute('id');
   console.log(articleId) ;
-    /* get the article id */
   const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-    /* find the title element */
-  
-    /* get the title from the title element */
   const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
   console.log('linkHTML:', linkHTML);
-    /* create HTML of the link */
-  /* titleList.innerHTML = titleList.innerHTML + linkHTML; */
+  html = html + linkHTML;
   titleList.insertAdjacentHTML('beforeend', linkHTML);
-    /* insert link into titleList */
+}
+console.log(html);
+}
 
-}
-}
 generateTitleLinks();
 
 
