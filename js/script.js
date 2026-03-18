@@ -28,11 +28,7 @@ function titleClickHandler(event){
     console.log('targetArticle:', targetArticle);
 }
 
-const links = document.querySelectorAll('.titles a');
 
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
-}
 
 
 const optArticleSelector = '.post',
@@ -56,8 +52,15 @@ function generateTitleLinks(){
   console.log('linkHTML:', linkHTML);
   html = html + linkHTML;
   titleList.insertAdjacentHTML('beforeend', linkHTML);
-}
-console.log(html);
+  }
+  console.log(html);
+
+  const links = document.querySelectorAll('.titles a');
+  console.log('links', links);
+
+  for(let link of links){
+  link.addEventListener('click', titleClickHandler);
+  }
 }
 
 generateTitleLinks();
