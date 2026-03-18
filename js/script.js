@@ -34,7 +34,7 @@ function titleClickHandler(event){
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
-
+  
 function generateTitleLinks(){
   const titleList = document.querySelector(optTitleListSelector);
   function clearMessages(){
@@ -64,5 +64,15 @@ function generateTitleLinks(){
 }
 
 generateTitleLinks();
+
+const  = '.post-tags .list';
+function generateTags(){
+    const articles = document.querySelectorAll(optArticleSelector);
+    for(let article of articles){
+    const articleTag = article.getAttribute('data-tags');
+    console.log('articleTag', artcicleTag);
+    const tagList = article.querySelector(optArticleTagsSelector);
+    }
+}
 
 
