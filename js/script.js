@@ -178,6 +178,7 @@ function authorClickHandler(event){
         activeAuthor.classList.remove('active');
       }
   clickedElement.classList.add('active');
+  generateTitleLinks('[data-author="' + dataAuthor + '"]');
 }
 
 function addClickListenersToAuthors(){
@@ -186,4 +187,5 @@ function addClickListenersToAuthors(){
       link.addEventListener('click', authorClickHandler);
     }
 }
+
 addClickListenersToAuthors();
