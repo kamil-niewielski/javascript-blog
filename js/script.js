@@ -42,6 +42,7 @@ function generateTitleLinks(customSelector = ''){
 
   let html = '';
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  console.log('articles', articles);
   for(let article of articles){
     const articleId = article.getAttribute('id');
     console.log(articleId) ;
@@ -110,23 +111,24 @@ function tagClickHandler(event){
   const tag = href.replace('#tag-', '');
   console.log('tag', tag);
   /* find all tag links with class active */
-  
+    const activeTags = document.querySelectorAll('.post-tags a.post.active');
     /* START LOOP: for each active tag link */
-
+      for (let activeTag of activeTags){
       /* remove class active */
-
+        activeTag.classList.remove('active');
     /* END LOOP: for each active tag link */
-
+      }
   /* find all tag links with "href" attribute equal to the "href" constant */
-
+  const activeLinkTags = document.querySelectorAll('a[href="' + href + '"]');
     /* START LOOP: for each found tag link */
-
-      /* add class active */
-
+      for (let activeLinkTag of activeLinkTags){
+        /* add class active */
+        activeLinkTag.classList.add('active');
     /* END LOOP: for each found tag link */
-
+      }
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-tags~="' + tag + '"]');
+  console.log(generateTitleLinks);
 }
 
 
