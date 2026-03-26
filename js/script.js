@@ -108,10 +108,10 @@ function tagClickHandler(event){
   const href = clickedElement.getAttribute('href'); 
   console.log('href', href);
   /* make a new constant "tag" and extract tag from the "href" constant */
-  const tag = href.replace('#tag-', '');
+  const tag = href.replace('#', '');
   console.log('tag', tag);
   /* find all tag links with class active */
-    const activeTags = document.querySelectorAll('.post-tags a.post.active');
+    const activeTags = document.querySelectorAll('.post-tags a.active');
     /* START LOOP: for each active tag link */
       for (let activeTag of activeTags){
       /* remove class active */
@@ -128,21 +128,42 @@ function tagClickHandler(event){
       }
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-tags~="' + tag + '"]');
-  console.log(generateTitleLinks);
 }
 
 
 
 function addClickListenersToTags(){
   /* find all links to tags */
-
+  const linksTags = document.querySelectorAll('.post-tags a');
   /* START LOOP: for each link */
-
+    for (let linkTag of linksTags){
     /* add tagClickHandler as event listener for that link */
-
+      linkTag.addEventListener('click', tagClickHandler);
   /* END LOOP: for each link */
+    }
 }
-
 addClickListenersToTags();
 
+const optArticleAuthorSelector = '.data-author';
 
+function generateAuthors(){
+  /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
+    /* START LOOP: for every article: */
+      for(let article of articles){
+      /* find authors wrapper */
+      const articleAuthorsWrapper = article.querySelector('.post-author');
+      /* get tags from data-author attribute */
+      const articleAuthor = article.getAttribute('data-author');
+      console.log('articleAuthor', articleAuthor);
+      /* generate HTML of the link */
+      const linkHTML = '<a data-author="' + articleAuthor + '">' + articleAuthor + '</a>';
+      console.log('linkHTML', linkHTML);
+      /* add generated code to html variable */
+      articleAuthorsWrapper.insertAdjacentHTML('beforeend', linkHTML);
+    }
+}
+
+generateAuthors()
+
+/* addClickListenersToAuthors authorClickHandler */
