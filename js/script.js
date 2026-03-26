@@ -61,7 +61,7 @@ function generateTitleLinks(customSelector = ''){
   }
 }
 
-generateTitleLinks('[data-tags~="' + tag + '"]');
+generateTitleLinks();
 
 const optArticleTagsSelector = '.post-tags .list';
 function generateTags(){
@@ -126,7 +126,10 @@ function tagClickHandler(event){
     /* END LOOP: for each found tag link */
 
   /* execute function "generateTitleLinks" with article selector as argument */
+  generateTitleLinks('[data-tags~="' + tag + '"]');
 }
+
+
 
 function addClickListenersToTags(){
   /* find all links to tags */
