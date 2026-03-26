@@ -167,3 +167,23 @@ function generateAuthors(){
 generateAuthors()
 
 /* addClickListenersToAuthors authorClickHandler */
+
+function authorClickHandler(event){
+  event.preventDefault();
+  const clickedElement = this;
+  const dataAuthor = clickedElement.getAttribute('data-author'); 
+  console.log('dataAuthor', dataAuthor);
+  const activeAuthors = document.querySelectorAll('.post-author a.active');
+      for (let activeAuthor of activeAuthors){
+        activeAuthor.classList.remove('active');
+      }
+  clickedElement.classList.add('active');
+}
+
+function addClickListenersToAuthors(){
+  const authorLinks = document.querySelectorAll('.post-author a');
+    for (let link of authorLinks){
+      link.addEventListener('click', authorClickHandler);
+    }
+}
+addClickListenersToAuthors();
