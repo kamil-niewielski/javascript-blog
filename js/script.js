@@ -30,6 +30,8 @@ function titleClickHandler(event){
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
+  const optCloudClassCount = 5;
+  const optCloudClassPrefix = 'tag-size';
   
 function generateTitleLinks(customSelector = ''){
   const titleList = document.querySelector(optTitleListSelector);
@@ -63,7 +65,9 @@ function generateTitleLinks(customSelector = ''){
 }
 
 generateTitleLinks();
+/* Create function calculateTagClass(count, params);  
 
+*/
 const optArticleTagsSelector = '.post-tags .list';
 const optTagsListSelector = '.list.tags'
 function generateTags(){
@@ -129,7 +133,7 @@ function generateTags(){
       return params;
       console.log('params:', params); 
   }
-  calculateTagsParams();
+  calculateTagsParams(allTags);
   
 
   /* [NEW] create variable for all links HTML code  */
@@ -139,7 +143,10 @@ function generateTags(){
   /* [NEW] START LOOP: for each tag in allTags  */
     for(let tag in allTags){
       /* [NEW] generate code of a link and add it to allTagsHTML */
-      allTagsHTML += tag+ ' ('+ allTags[tag] +') ';
+      const tagLinkHTML = '<li>' + calculateTagsClass(allTags[tag], tagsParams) + '</li>';
+      console.log('taglinkHTML:', tagLinkHTML);
+      allTagsHTML += tagLinkHTML;
+
     }
     /*[NEW] add html from allTagsHTML to tagList */
     tagList.innerHTML = allTagsHTML;
