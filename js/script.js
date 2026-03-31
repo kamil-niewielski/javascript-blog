@@ -105,8 +105,36 @@ function generateTags(){
 }
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector(optTagsListSelector);
+/* Create function calculateTagsParams */
+  const params = {
+  max: 0,
+  min: 999999,
+  }
+  function calculateTagsParams(allTags){
+      for(let tag in allTags){
+      console.log(tag + ' is used ' + allTags[tag] + ' times');
+        if(allTags[tag] > params.max){
+        params.max = allTags[tag];
+        }
+        if(allTags[tag] < params.min){
+        params.min = allTags[tag];
+        }
+        
+       /* alternative with function Math 
+        params.max = Math.max(tags[tag], params.max);
+        params.min = Math.min(tags[tag], params.min);
+        */
+       
+      }
+      return params;
+      console.log('params:', params); 
+  }
+  calculateTagsParams();
+  
 
   /* [NEW] create variable for all links HTML code  */
+    const tagParams = calculateTagsParams(allTags);
+    console.log('tagParams:', tagParams);
     let allTagsHTML = '';
   /* [NEW] START LOOP: for each tag in allTags  */
     for(let tag in allTags){
